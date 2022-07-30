@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('nip');
             $table->string('name');
-            $table->boolean('gender');//
+            $table->string('gender');//
             $table->date('birth_date');
             $table->string('phone_number');
             $table->string('address');
             $table->timestamps();
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
     }
 
