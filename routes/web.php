@@ -14,11 +14,18 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('index');
+// })->middleware('auth');
+
 Route::get('/', function () {
-    return view('index');
-})->middleware('auth');
+    return view('welcome');
+});
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
+// Route::get('/login', [LoginController::class, 'index'])->name('login');
+// Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::post('/logout', [LoginController::class, 'signOut']);
+// Route::post('/logout', [LoginController::class, 'signOut']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
