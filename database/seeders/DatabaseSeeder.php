@@ -19,20 +19,20 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        StaffUser::create([
-            'staff_id' => '1',
-            'username' => 'admin',
-            'password' => bcrypt('1234'),
-            'role' => 'admin'
-        ]);
+        // StaffUser::create([
+        //     'staff_id' => '1',
+        //     'username' => 'admin',
+        //     'password' => bcrypt('1234'),
+        //     'role' => 'admin'
+        // ]);
 
-        Staff::create([
-            'nip' => '12946193469',
-            'name' => 'Admin',
-            'gender' => 'Laki-laki',
-            'birth_date' => '2000-01-01',
-            'phone_number' => '08123312312',
-            'address' => 'Bogor'
-        ]);
+        // Staff::create([
+        //     'nip' => '12946193469',
+        //     'name' => 'Admin',
+        //     'gender' => 'Laki-laki',
+        //     'birth_date' => '2000-01-01',
+        //     'phone_number' => '08123312312',
+        //     'address' => 'Bogor'
+        // ]);
     }
 }
