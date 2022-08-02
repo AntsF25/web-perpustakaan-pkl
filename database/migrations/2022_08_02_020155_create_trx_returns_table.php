@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shifts', function (Blueprint $table) {
+        Schema::create('trx_returns', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id');
-            $table->string('shift_category');
-            $table->time('time_start');
-            $table->time('time_end');
+            $table->foreignId('borrow_id')->unique();
             $table->timestamps();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shifts');
+        Schema::dropIfExists('trx_returns');
     }
 };

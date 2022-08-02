@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('stocks', function (Blueprint $table) {
+        Schema::create('tb_staff_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id');
-            $table->integer('stock');
-            $table->integer('initial_stock');
-            $table->date('borrow_date');
-            $table->integer('end_stock');
+            // file 2014
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stocks');
+        Schema::dropIfExists('tb_staff_users');
     }
 };

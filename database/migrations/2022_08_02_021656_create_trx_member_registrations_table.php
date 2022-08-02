@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('member_registrations', function (Blueprint $table) {
+        Schema::create('trx_member_registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
+            $table->string('nis')->unique();
             $table->string('name');
             $table->boolean('gender');//
             $table->string('class');//
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_registrations');
+        Schema::dropIfExists('trx_member_registrations');
     }
 };

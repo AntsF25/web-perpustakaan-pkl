@@ -13,17 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('schools', function (Blueprint $table) {
+        Schema::create('trx_staff_registrations', function (Blueprint $table) {
             $table->id();
+            $table->string('nip')->unique();
             $table->string('name');
-            $table->string('address');
-            $table->string('city');
-            $table->string('post_code');
-            $table->string('email');
-            $table->string('website');
-            $table->string('fax');
+            $table->boolean('gender');//
+            $table->date('birth_date');
             $table->string('phone_number');
+            $table->string('address');
+            $table->text('description');
             $table->timestamps();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
     }
 
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schools');
+        Schema::dropIfExists('trx_staff_registrations');
     }
 };

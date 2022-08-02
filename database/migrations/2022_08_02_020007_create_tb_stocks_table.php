@@ -13,18 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('borrows', function (Blueprint $table) {
+        Schema::create('tb_stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id');
-            $table->foreignId('book_id');
-            $table->foreignId('staff_id');
+            $table->foreignId('book_id')->unique();
+            $table->integer('stock');
+            $table->integer('initial_stock');
             $table->date('borrow_date');
-            $table->date('due_date');
-            $table->foreignId('school_id');
-            $table->text('description');
+            $table->integer('end_stock');
             $table->timestamps();
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
         });
     }
 
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borrows');
+        Schema::dropIfExists('tb_stocks');
     }
 };

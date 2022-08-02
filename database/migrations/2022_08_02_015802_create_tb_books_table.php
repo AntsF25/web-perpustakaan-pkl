@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('member_users', function (Blueprint $table) {
+        Schema::create('tb_books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->unique();
-            $table->string('username');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('isbn');
+            $table->string('title');
+            $table->string('author');//
+            $table->string('publisher');//
+            $table->string('cover');
+            $table->string('category');//
+            $table->string('subject');
+            $table->date('date added');
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_users');
+        Schema::dropIfExists('tb_books');
     }
 };

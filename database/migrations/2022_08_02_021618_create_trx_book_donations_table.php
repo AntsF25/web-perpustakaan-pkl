@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('returns', function (Blueprint $table) {
+        Schema::create('trx_book_donations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('borrow_id');
+            $table->foreignId('member_id')->unique();
+            $table->string('title');
+            $table->string('author');//
+            $table->string('publisher');//
+            $table->string('category');//
             $table->timestamps();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('returns');
+        Schema::dropIfExists('trx_book_donations');
     }
 };

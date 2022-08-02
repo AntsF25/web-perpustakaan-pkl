@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pickets', function (Blueprint $table) {
+        Schema::create('tb_school', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id');
-            $table->boolean('mon');
-            $table->boolean('tue');
-            $table->boolean('wed');
-            $table->boolean('thu');
-            $table->boolean('fri');
+            $table->string('name');
+            $table->string('address');
+            $table->string('city');
+            $table->string('post_code');
+            $table->string('email');
+            $table->string('website');
+            $table->string('fax');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pickets');
+        Schema::dropIfExists('tb_school');
     }
 };

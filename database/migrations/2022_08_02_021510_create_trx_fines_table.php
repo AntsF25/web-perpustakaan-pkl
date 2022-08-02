@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('trx_fines', function (Blueprint $table) {
             $table->id();
-            $table->string('isbn')->unique();
-            $table->string('title');
-            $table->string('author');//
-            $table->string('publisher');//
-            $table->string('cover');
-            $table->string('category');//
-            $table->string('subject');
+            $table->foreignId('member_id')->unique();
+            $table->double('total');
+            $table->text('description');
             $table->timestamps();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
         });
     }
 
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('trx_fines');
     }
 };
