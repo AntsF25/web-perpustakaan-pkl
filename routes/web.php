@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +15,23 @@ use App\Http\Controllers\LoginController;
 */
 
 // Route::get('/', function () {
-//     return view('index');
-// })->middleware('auth');
+//     return view('welcome');
+// });
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::controller(LoginController::class)->group(function(){
+    Route::get('login','index')->name('login');
+    Route::post('login/proses', 'proses');
+    Route::get('logout', 'logout');
+    Route::get('login/dashboard', function(){
+        return view('login.dashboard');
+    });
+});
 
-// Route::get('/login', [LoginController::class, 'index'])->name('login');
-// Route::post('/login', [LoginController::class, 'authenticate']);
+Route::group(['middleware' => ['auth']],function (){
+    Route::group(['middleware' => ['CheckUserLogin:staff']], function(){
+        Route::resource('dashboard', dashboard::class);
+    });
+});
 
-// Route::post('/logout', [LoginController::class, 'signOut']);
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

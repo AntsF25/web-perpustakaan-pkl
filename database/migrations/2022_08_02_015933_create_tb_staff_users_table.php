@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('tb_staff_users', function (Blueprint $table) {
             $table->id();
-            // file 2014
+            $table->foreignId('staff_id')->unique();
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('role');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
